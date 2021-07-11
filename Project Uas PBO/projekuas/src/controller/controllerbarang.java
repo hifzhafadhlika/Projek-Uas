@@ -100,7 +100,7 @@ public class controllerbarang {
     }
     
     public void cariNama(){
-        if(frame.getTf_cari().getText().trim().isEmpty()){
+        if(!frame.getTf_cari().getText().trim().isEmpty()){
             implbarang.getCariNama(frame.getTf_cari().getText());
             isiTableCariNama();
         }
