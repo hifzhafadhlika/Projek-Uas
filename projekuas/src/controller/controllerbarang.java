@@ -52,7 +52,6 @@ public class controllerbarang {
         if(!frame.getTf_nama().getText().trim().isEmpty() & !frame.getTf_nama().getText().trim().isEmpty()){
             modelbarang mb = new modelbarang();
             
-            mb.setNo(Integer.valueOf(frame.getTf_no().getText()));
             mb.setNama(frame.getTf_nama().getText());
             mb.setHarga(Double.valueOf(frame.getTf_harga().getText()));
             mb.setStok(Integer.valueOf(frame.getTf_stok().getText()));
@@ -85,9 +84,8 @@ public class controllerbarang {
             mb.setNo(Integer.valueOf(frame.getTf_no().getText()));
             
             implbarang.update(mb);
-            JOptionPane.showMessageDialog(null, "Data diperbarui");
-        }
-        else{
+            JOptionPane.showMessageDialog(null, "data diperbarui");
+        }else{
             JOptionPane.showMessageDialog(null, "Data gagal diperbarui");
         }
     }
@@ -100,12 +98,11 @@ public class controllerbarang {
     }
     
     public void cariNama(){
-        if(!frame.getTf_cari().getText().trim().isEmpty()){
+        if(frame.getTf_cari().getText().trim().isEmpty()){
             implbarang.getCariNama(frame.getTf_cari().getText());
             isiTableCariNama();
-        }
-        else{
-            JOptionPane.showMessageDialog(null, "Silahkan masukan nama");
+        }else{
+            JOptionPane.showMessageDialog(null, "silahkan masukan nama");
         }
     }
 }

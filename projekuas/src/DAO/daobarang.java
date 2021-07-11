@@ -22,9 +22,9 @@ import model.modelbarang;
 public class daobarang implements implementbarang  {
 
     Connection connection;
-    final String insert = "INSERT INTO barang (No, Nama, Harga, Stok) VALUES (?, ?, ?, ?)";
-    final String delete = "DELETE FROM barang WHERE No=?";
-    final String update = "UPDATE barang set Nama=?, Harga=?, Stok=? WHERE No=?";
+    final String insert = "INSERT INTO barang (no,nama,harga,stok) VALUES (?, ?, ?, ?)";
+    final String delete = "DELETE FROM barang WHERE no=?";
+    final String update = "UPDATE barang set no=?, nama=?, harga=?, stok=?,";
     final String select = "SELECT * FROM barang";
     final String cariNama = "SELECT * FROM barang WHERE nama like ?";
 
@@ -40,11 +40,10 @@ public class daobarang implements implementbarang  {
         
         try {
             statement = connection.prepareStatement(insert);
-            statement.setInt(1, mb.getNo() );
-            statement.setString(2, mb.getNama());
-            statement.setDouble(3, mb.getHarga());
-            statement.setInt(4, mb.getStok());
-            int executeUpdate = statement.executeUpdate();
+            statement.setString(1, mb.getNama());
+            statement.setDouble(2, mb.getHarga());
+            statement.setInt(3, mb.getStok());
+            statement.executeUpdate();
             ResultSet rs = statement.getGeneratedKeys();
             while (rs.next()){
                 mb.setNo(rs.getInt(1));
@@ -115,10 +114,10 @@ public class daobarang implements implementbarang  {
             ResultSet rs = st.executeQuery(select);
             while(rs.next()){
                 modelbarang mb = new modelbarang();
-                mb.setNo(rs.getInt("No"));
-                mb.setNama(rs.getString("Nama"));
-                mb.setHarga(rs.getDouble("Harga"));
-                mb.setStok(rs.getInt("Stok"));
+                mb.setNo(rs.getInt("no"));
+                mb.setNama(rs.getString("nama"));
+                mb.setHarga(rs.getDouble("harga"));
+                mb.setStok(rs.getInt("stok"));
                 lmb.add(mb);
             }
         } catch (SQLException ex) {
@@ -138,10 +137,10 @@ public class daobarang implements implementbarang  {
             ResultSet rs = st.executeQuery();
             while(rs.next()){
                 modelbarang mb = new modelbarang();
-                mb.setNo(rs.getInt("No"));
-                mb.setNama(rs.getString("Nama"));
-                mb.setHarga(rs.getDouble("Harga"));
-                mb.setStok(rs.getInt("Stok"));
+                mb.setNo(rs.getInt("no"));
+                mb.setNama(rs.getString("nama"));
+                mb.setHarga(rs.getDouble("harga"));
+                mb.setStok(rs.getInt("stok"));
                 lmb.add(mb);
             }
             
